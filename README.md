@@ -4,10 +4,18 @@ LIB-WarpOverlay
 The WarpOverlay! Project is the development project for the replacement of HW EnDIVE.
 
 
-License
+LICENSE
+===============
+- Open Source. MIT license. 
 
-    Open Source. MIT license. 
+COMPILE TOOLS
+===============
+* 
 
-Author
+AUTHORS
+===============
+* Valery Gaynulline
 
-    Valery Gaynullin 
+LINKS
+===============
+* 
