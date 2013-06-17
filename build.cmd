@@ -1,0 +1,24 @@
+@ECHO OFF
+SET WATCOM=D:\OW13
+SET HOME=D:\WORK\OVERLAY
+SET PATH=%WATCOM%\BINP;%WATCOM%\BINW;%PATH%
+SET BEGINLIBPATH=%WATCOM%\BINP\DLL
+SET INCLUDE=%HOME%\INCLUDE;%WATCOM%\H;%WATCOM%\H\OS2;
+SET LIB=%HOME%\LIB;%WATCOM%\LIB386;%WATCOM%\LIB386\OS2;
+SET HELP=%WATCOM%\BINP\HELP;%HELP%
+
+SET BLD_VENDOR=Valery Gaynullin
+SET BLD_VERSION=1.10.002
+
+cd GRADD
+wmake
+del ..\BIN\woverlay.dll
+move woverlay.dll ..\BIN\woverlay.dll
+cd ..
+
+cd APIDLL
+wmake
+del ..\BIN\hwvideo.dll
+move hwvideo.dll ..\BIN\hwvideo.dll
+cd ..
+
