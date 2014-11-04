@@ -1,0 +1,5 @@
+format os2 lx pm
+option eliminate, map,start=main,stack=32k
+name wo_demo.exe
+file wovldemo.obj,stack.obj
+lib %watcom%\lib386\os2\os2386.lib

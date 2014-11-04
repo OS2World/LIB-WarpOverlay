@@ -1,0 +1,59 @@
+.ERASE
+.SUFFIXES:
+.SUFFIXES: .lst .obj .c .asm
+
+CFLAGS  = -bt=os2v2 -bg -fpi87 -6s -fp6 -d0 -s -mf -ox -wx -oi -zp1 -zl
+CC      = WCC386 $(CFLAGS)
+
+AFLAGS  = -q
+ASM     = WASM $(AFLAGS)
+
+DFLAGS  = -l -s
+DIS     = WDISASM $(DFLAGS)
+
+LFLAGS  = option quiet, dosseg, map, align=32,
+LINK    = WLINK
+
+BFLAGS  = -s -t -c -b -q -n
+LIB     = WLIB $(BFLAGS)
+
+.obj.lst:
+        $(DIS) $*
+
+.c.obj: .AUTODEPEND
+        $(CC) $*.c
+
+.asm.obj: .AUTODEPEND
+        $(ASM) $*.asm
+
+
+
+#===================================================================
+#
+#   List of source files
+#
+#===================================================================
+FILE0   = wovldemo.obj
+FILE1   = stack.obj
+FILE2   =
+FILE3   =
+FILE4   =
+FILE5   =
+FILE6   =
+FILE7   =
+FILE8   =
+FILE9   =
+FILES   = $(FILE0) $(FILE1) $(FILE2) $(FILE3) $(FILE4) $(FILE5) $(FILE6) $(FILE7) $(FILE8) $(FILE9)
+TARGET  = stripes
+
+
+
+#===================================================================
+#
+#   Specific dependencies
+#
+#===================================================================
+all: $(TARGET).exe
+
+$(TARGET).exe: $(TARGET).lnk $(FILES)
+    $(LINK) @$(TARGET).lnk
